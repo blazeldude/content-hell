@@ -307,7 +307,7 @@ async function getValidId() {
     
     for (let attempt = 0; attempt < maxAttempts; attempt++) {
         const query = Array(3).fill().map(() => chars.charAt(Math.floor(Math.random() * chars.length))).join('');
-        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&maxResults=1&type=video&videoDuration=medium&part=snippet&q=${query}`);
+        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&maxResults=1&type=video&videoEmbeddable=true&videoDuration=medium&part=snippet&q=${query}`);
     
     try {
           const data = await response.json();
