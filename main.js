@@ -189,7 +189,7 @@ scene.add(directionalLight2);
 //GALLERIES
 const cellSize = 125;
 const cellsPerSide = groundSize / cellSize;
-const galleryCount = 5;
+const galleryCount = 2;
 
 const gridPositions = [];
 for (let x = 0; x < cellsPerSide; x++) {
@@ -204,6 +204,7 @@ for (let x = 0; x < cellsPerSide; x++) {
 
 gridPositions.sort((a, b) => a.sort - b.sort);
 
+(async () => {
 for (let i = 0; i < galleryCount; i++) {
 
   const pos = gridPositions[i];
@@ -216,6 +217,7 @@ for (let i = 0; i < galleryCount; i++) {
   const newGallery = await createGallery(x, 10, z, rotation);
   galleries.push(newGallery)
 }
+})();
 
 //TERRAIN
 generateTerrain(galleries);
