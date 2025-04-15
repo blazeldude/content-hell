@@ -302,6 +302,7 @@ gltfLoader.load('models/galleryblank2.glb', function (gltf) {
   };
   }
 
+
 async function getValidId() {
     const apiKey = import.meta.env.PUBLIC_API_KEY;
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_';
