@@ -304,13 +304,13 @@ gltfLoader.load('models/galleryblank2.glb', function (gltf) {
 
 
 async function getValidId() {
-    const apiKey = process.env.VITE_API_KEY;
+    const apiKey = import.meta.env.VITE_API_KEY;;
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_';
     const maxAttempts = 2;
 
     console.log("Environment Variables:", {
-      VITE_API_KEY: process.env.VITE_API_KEY,
-      ALL_ENV: process.env
+      VITE_API_KEY: import.meta.env.VITE_API_KEY,
+      ALL_ENV: import.meta.env
     });
     
     for (let attempt = 0; attempt < maxAttempts; attempt++) {
