@@ -189,7 +189,7 @@ scene.add(directionalLight2);
 //GALLERIES
 const cellSize = 125;
 const cellsPerSide = groundSize / cellSize;
-const galleryCount = 2;
+const galleryCount = 5;
 
 const gridPositions = [];
 for (let x = 0; x < cellsPerSide; x++) {
