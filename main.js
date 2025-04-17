@@ -307,11 +307,6 @@ async function getValidId() {
     const apiKey = import.meta.env.VITE_API_KEY;;
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_';
     const maxAttempts = 2;
-
-    console.log("Environment Variables:", {
-      VITE_API_KEY: import.meta.env.VITE_API_KEY,
-      ALL_ENV: import.meta.env
-    });
     
     for (let attempt = 0; attempt < maxAttempts; attempt++) {
         const query = Array(3).fill().map(() => chars.charAt(Math.floor(Math.random() * chars.length))).join('');
