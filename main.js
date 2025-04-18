@@ -36,11 +36,11 @@ camera.rotation.x = THREE.MathUtils.degToRad(0);
 const scene = new THREE.Scene();
 const cssScene = new THREE.Scene();
 
-const gui = new GUI();
-const cameraInfo = {
-  position: { x: 0, y: 0, z: 0 },
-  rotation: { x: 0, y: 0, z: 0 }
-};
+// const gui = new GUI();
+// const cameraInfo = {
+//   position: { x: 0, y: 0, z: 0 },
+//   rotation: { x: 0, y: 0, z: 0 }
+// };
 
 gui.add(cameraInfo.position, 'x').name('Pos X').listen();
 gui.add(cameraInfo.position, 'y').name('Pos Y').listen();
@@ -316,7 +316,6 @@ async function getValidId() {
           const data = await response.json();
           if (data.items && data.items.length > 0) {
             const videoId = data.items[0].id.videoId;
-            console.log(`Found video: ${videoId} (query: ${query})`);
             return videoId;
           }
         } catch (err) {
