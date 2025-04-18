@@ -409,10 +409,6 @@ function checkIfInRange(camera) {
   function animate () {
     requestAnimationFrame(animate);
 
-    cameraInfo.position.x = camera.position.x;
-    cameraInfo.position.y = camera.position.y;
-    cameraInfo.position.z = camera.position.z;
-
     handleMovement();
 
     checkIfInRange(camera);
