@@ -36,16 +36,6 @@ camera.rotation.x = THREE.MathUtils.degToRad(0);
 const scene = new THREE.Scene();
 const cssScene = new THREE.Scene();
 
-// const gui = new GUI();
-// const cameraInfo = {
-//   position: { x: 0, y: 0, z: 0 },
-//   rotation: { x: 0, y: 0, z: 0 }
-// };
-
-gui.add(cameraInfo.position, 'x').name('Pos X').listen();
-gui.add(cameraInfo.position, 'y').name('Pos Y').listen();
-gui.add(cameraInfo.position, 'z').name('Pos Z').listen();
-
 const cubeTextureLoader = new THREE.CubeTextureLoader();
 const skybox = cubeTextureLoader.load([
 //right
