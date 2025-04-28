@@ -1,11 +1,21 @@
+// 'Content Hell'
+//16/04/2025, Marc Jones Blasco
+//Instructions:
+//Click to play
+//WASD to move
+//Ackowledgements:
+// Skybox from OpenGameArt.org by vladislavzh
+// Sounds from Dryoma on Itch.io dryoma.itch.io/footsteps-sounds
+// Scene textures from an open source library made for ActiveWorlds MMO circa 2002 by various unknown users
+
 import * as THREE from 'three';
 import { CSS3DRenderer, CSS3DObject} from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { ImprovedNoise } from 'three/addons/math/ImprovedNoise.js';
-import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js';
 import { MeshBVH, acceleratedRaycast } from 'three-mesh-bvh';
 
+//SETUP
 const w = window.innerWidth;
 const h = window.innerHeight;
 
@@ -25,6 +35,7 @@ cssRenderer.domElement.style.top = 0;
 cssRenderer.domElement.style.pointerEvents = 'none';
 document.querySelector('#css').appendChild(cssRenderer.domElement);
 
+//CAMERA
 const fov = 50;
 const aspect = w / h;
 const near = 0.1;
@@ -36,6 +47,7 @@ camera.rotation.x = THREE.MathUtils.degToRad(0);
 const scene = new THREE.Scene();
 const cssScene = new THREE.Scene();
 
+//SKYBOX
 const cubeTextureLoader = new THREE.CubeTextureLoader();
 const skybox = cubeTextureLoader.load([
 //right
@@ -105,6 +117,7 @@ function playStepSound() {
   sound.play();
 }
 
+//CONTROLS
 const raycaster = new THREE.Raycaster();
 THREE.Mesh.prototype.raycast = acceleratedRaycast;
 
@@ -162,6 +175,7 @@ function handleMovement() {
 
   };
 
+//LIGHTING
 const ambientLight = new THREE.AmbientLight(0xFFFFFF, .5);
 scene.add(ambientLight);
 
@@ -215,6 +229,7 @@ addFence();
 
 window.addEventListener('resize', onWindowResize );
 
+//GALLERY ELEMENT
 async function createGallery(x, y, z, rotation) {
 
 const gltfLoader = new GLTFLoader();
@@ -292,7 +307,7 @@ gltfLoader.load('models/galleryblank2.glb', function (gltf) {
   };
   }
 
-
+//YOUTUBE ID GENERATION
 async function getValidId() {
     const apiKey = import.meta.env.VITE_API_KEY;;
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_';
@@ -318,6 +333,7 @@ async function getValidId() {
       
 }
 
+//TERRAIN GENERATOR
 function generateTerrain() {
 
 const terrainRes = 250;
@@ -348,6 +364,7 @@ ground.rotation.x = - Math.PI / 2;
 scene.add(ground);    
 }
 
+//EDGE FENCE
 function addFence() {
   const fenceGeo = new THREE.PlaneGeometry(terrainSize, 20);
   const fenceTexture = new THREE.TextureLoader().load("textures/images/fence.png");
@@ -372,8 +389,7 @@ function addFence() {
   scene.add(fenceSouth, fenceNorth, fenceWest, fenceEast);
 }
 
-
-
+//DISTANCE CHECK LAZY LOADING
 function checkIfInRange(camera) {
   if (galleries.length === 0) return;
   let shouldLowerVolume = false;
@@ -406,6 +422,7 @@ function checkIfInRange(camera) {
   
 }
 
+//ANIMATE
   function animate () {
     requestAnimationFrame(animate);
 
@@ -421,6 +438,7 @@ function checkIfInRange(camera) {
 
   animate();
 
+//WINDOW RESIZE
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
